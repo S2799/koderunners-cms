@@ -1,0 +1,27 @@
+<%- include('../_layouts/adminheader') %>
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="#">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active">Add Category</li>
+    </ol>
+<a href="/admin/categories" class="btn btn-primary">Back to all categories</a>
+<br><br>
+
+<form action="/admin/categories/add-category" method="post">
+    <div class="form-group">
+        <label for="">Title</label>
+        <input type="text" class="form-control" name="title" value="<%= title %>" placeholder="Title">
+	</div>
+	<button class="btn btn-default">Submit</button>
+</form>
+</div>
+				</div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+  </div>
+</div>
+
+<%- include('../_layouts/adminfooter') %>

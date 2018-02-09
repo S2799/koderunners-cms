@@ -1,0 +1,27 @@
+<div class="card mb-3">
+  <div class="card-header"><i class="fa fa-table"></i> Pages</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>Preview</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% items.forEach(function(item) { %>
+            <tr>
+                <td><%= item.title %></td>
+                <td><a href="/admin/pages/edit-page/<%= item._id %>">Edit</a></td>
+                <td><a class="confirmDeletion" href="/admin/pages/delete-page/<%= item._id %>">Delete</a></td>
+                <td><a href="/admin/pages/preview/<%= item._id %>" target="_blank">Preview</a></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

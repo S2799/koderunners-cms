@@ -1,0 +1,44 @@
+<%- include('../_layouts/adminheader') %>
+<div class="content-wrapper">
+	<div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+    	<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+      	<li class="breadcrumb-item active">Edit Page</li>
+    </ol>
+	<a href="/admin/pages" class="btn btn-primary">Back to all pages</a>
+	<br><br>
+
+	<form method="post" action="/admin/pages/edit-page/<%= id %>">
+		<div class="form-group">
+			<label for="">Title</label>
+			<input type="text" class="form-control" name="title" value="<%= title %>" placeholder="Title">
+		</div>
+		<div class="form-group">
+			<label for="">Slug</label>
+			<input type="text" class="form-control" name="slug" value="<%= slug %>" placeholder="Title">
+		</div>
+		<div class="form-group">
+			<label for="">Content</label>
+			<textarea name="content" class="form-control" id="ta" cols="30" rows="10" placeholder="content"><%= content %></textarea>
+		</div>
+		<button type="button" class="btn" onclick="parse()">Preview</button>
+		<button class="btn btn-default">Submit</button>
+	</form>
+	<br><br>
+
+	<h3>Preview</h3>
+	<br><br>
+	<div class="float:right" id="result" style="border: black;"></div>
+	<br><br>
+	</div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+  	</div>
+</div>
+<script>
+    function parse() {
+        var html = document.getElementById("ta").value;
+        document.getElementById("result").innerHTML = html;
+    }
+</script>
+<%- include('../_layouts/adminfooter') %>

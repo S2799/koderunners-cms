@@ -1,0 +1,21 @@
+<%- include('../_layouts/adminheader') %>
+
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="#">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active">Categories</li>
+    </ol>
+    <a href="/admin/categories/add-category" class="btn btn-primary">Add a Category</a>
+<br><br><br>
+    <%- include('../_layouts/contenttable') %>
+      </div>
+    </div>
+    
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+  </div>
+</div>
+<%- include('../_layouts/adminfooter') %>
