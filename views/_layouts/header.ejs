@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Home</title>
+		<title><%= title %></title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -12,13 +12,28 @@
 		<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">ArticleBase</a>
+				<a class="navbar-brand" href="/">Koderunners</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#">Page 1</a></li>
-				<li><a href="#">Page 2</a></li>
-				<li><a href="#">Page 3</a></li>
+				<% if(title == "Home") { %>
+					<li class="active"><a href="/">Home</a></li>
+					<li><a href="/about">About</a></li>
+				<% } else { %>
+					<li><a href="/">Home</a></li>
+					<li class="active"><a href="/about">About</a></li>
+				<% } %>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<% if(user) { %>
+					<li><a href="/users/<%= user.username %>">Hi, <%= user.username %></a></li>
+					<li><a href="/users/logout">logout</a></li>
+				<% } else { %>
+					<li><a href="/users/register">Register</a></li>
+					<li><a href="/users/login">Log in</a></li>
+				<% } %>
+				<% if(user && user.admin == 1) { %>
+					<li><a href="/admin/pages">Admin Area</a></li>
+				<% } %>
 			</ul>
 		</div>
 		</nav>

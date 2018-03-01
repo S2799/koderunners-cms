@@ -113,7 +113,7 @@ router.post('/edit-category/:id', function(req, res) {
                         if(err)
                             return console.log(err);
                         req.flash('success', 'category edited!');
-                        res.redirect('/admin/categories/edit-category/' + id);
+                        res.redirect('/admin/categories/');
                     });
 
                 });

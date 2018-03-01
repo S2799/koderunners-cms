@@ -1,0 +1,54 @@
+<%- include('../_layouts/adminheader') %>
+
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="#">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active">Add Page</li>
+    </ol>
+    <a href="/admin/pages" class="btn btn-primary">Back to all pages</a>
+		<br><br>
+		<form action="/admin/articles/add-article" method="post">
+				<div class="form-group">
+					<label for="">Title</label>
+					<input type="text" class="form-control" name="title" value="<%= title %>" placeholder="Title">
+				</div>
+				
+				<div class="form-group">
+					<label for="">Category</label>
+					<select name="category" class="form-control">
+						<% categories.forEach(function(cat) { %>
+							<option value="<%= cat.slug %>"><%= cat.title %></option>
+						<% }); %>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="">Image Url</label>
+					<input type="text" class="form-control" name="image" value="<%= image %>" placeholder="Image Url">
+				</div>
+				<div class="form-group">
+					<label for="">Article</label>
+					<textarea name="content" class="form-control" cols="30" rows="10" placeholder="Hello World"><%= content %></textarea>
+				</div>
+				<button type="button" class="btn" onclick="parse()">Preview</button>
+			<button class="btn btn-default">Submit</button>
+			</form>
+            <br><br>
+		<h3>Preview</h3>
+		<br><br>
+		<div class="float:right" id="result" style="border: black;"></div>
+		<br><br>
+		</div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+  </div>
+</div>
+<script>
+	function parse() {
+		var html = document.getElementById("ta").value;
+		document.getElementById("result").innerHTML = html;
+	}
+</script>
+<%- include('../_layouts/adminfooter') %>

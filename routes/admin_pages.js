@@ -169,7 +169,11 @@ router.get('/preview/:id', function(req, res) {
     Page.findById(req.params.id, function(err, page) {
         if(err)
             return console.log(err);
-        res.send(page.content);
+        res.render('index', {
+            title: page.title,
+            content: page.content,
+            current_year: new Date().getFullYear()
+        });
     });
 });
 

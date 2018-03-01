@@ -8,20 +8,14 @@
             <th>Title</th>
             <th>Edit</th>
             <th>Delete</th>
-            <th>Preview</th>
           </tr>
         </thead>
         <tbody>
           <% items.forEach(function(item) { %>
             <tr>
                 <td><%= item.title %></td>
-                <td><a href="/admin/pages/edit-page/<%= item._id %>">Edit</a></td>
-                <% if(item.slug == "home" || item.slug == "about") { %>
-                  <td>Not Allowed</td>
-                <% } else { %>
-                  <td><a class="confirmDeletion" href="/admin/pages/delete-page/<%= item._id %>">Delete</a></td>
-                <% } %>
-                <td><a href="/admin/pages/preview/<%= item._id %>" target="_blank">Preview</a></td>
+                <td><a href="/admin/categories/edit-category/<%= item._id %>">Edit</a></td>
+                <td><a class="confirmDeletion" href="/admin/categories/delete-category/<%= item._id %>">Delete</a></td>
             </tr>
           <% }); %>
         </tbody>

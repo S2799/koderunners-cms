@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const expressValidator = require('express-validator');
 var fileUpload = require('express-fileupload');
+var passport = require('passport');
 
 // Local Import
 var config = require('./config/database');
@@ -86,16 +87,33 @@ app.use(function (req, res, next) {
     next();
 });
 
+// Require Config file
+require('./config/passport')(passport);
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('*', function(req,res,next) {
+    res.locals.user = req.user || null;
+    next();
+ });
+
 // Set routes
 var pages = require('./routes/pages');
+var users = require('./routes/users');
 var adminPages = require('./routes/admin_pages');
 var adminCategories = require('./routes/admin_categories');
 var adminProducts = require('./routes/admin_products');
+var adminArticles = require('./routes/admin_articles');
 
 app.use('/', pages); // Index page
 app.use('/admin/pages', adminPages); // Admin index page
 app.use('/admin/categories', adminCategories); // Admin Categories page
 app.use('/admin/products', adminProducts); // Admin Products page
+app.use('/admin/articles', adminArticles);
+app.use('/users', users);
+
 
 // Starting server
 var port = 3000;
